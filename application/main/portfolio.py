@@ -3,8 +3,13 @@
 from flask import Blueprint
 from flask import request, jsonify
 
+from application.models import Property
 from index import app, auto
 from ..utils.helper import uuid_gen, json_validate
+
+from ..utils.query import QueryHelper
+from datetime import datetime
+from ..utils.helper import uuid_gen, json_validate, generate_token, verify_token, id_generator, convert_camel_to_snake, datetime_to_epoch
 
 portfolio_bp = Blueprint('portfolio', __name__)
 logger = app.logger
@@ -45,7 +50,8 @@ def get_recommend_portfolio():
   money = money * leverage
 
   # 查询数据库，取得所有符合要求的房源数据
-  print money, style
+  # todo add filter
+  properties = Property.query.all()
 
   # 通过算法，找出合适的投资组合
   rcmd_properties = {}
@@ -55,5 +61,49 @@ def get_recommend_portfolio():
   result["portfolio"] = list({
                                "id": x.id,
                              } for x in rcmd_properties)
+
+  return jsonify(result)
+
+
+@portfolio_bp.route('/debug', methods=['GET'])
+@auto.doc()
+@uuid_gen
+def for_debug():
+  # 查询数据库，取得所有符合要求的房源数据
+  properties = Property.query.filter_by(status="ForSale").all()
+
+  # 通过算法，找出合适的投资组合
+  rcmd_properties = {}
+
+  # 组装结果数据，并返回
+  result = {}
+  result["portfolio"] = list(
+    {
+      "id": x.id,
+      "source": x.source,
+      "source_id": x.source_id,
+      "latitude": x.latitude,
+      "longitude": x.longitude,
+      "square_feet": x.square_feet,
+      "bedrooms": x.bedrooms,
+      "bathrooms": x.bathrooms,
+      "built_year": x.built_year,
+      "property_type": x.property_type,
+      "lot_size": x.lot_size,
+      "is_pool": x.is_pool,
+      "address1": x.address1,
+      "zip": x.zip,
+      "city": x.city,
+      "country": x.is_pool,
+      "cbsacode": x.cbsacode,
+      "state": x.state,
+      "list_price": x.list_price,
+      "monthly_rent": x.monthly_rent,
+      "yearly_insurance_cost": x.yearly_insurance_cost,
+      "yearly_property_taxes": x.yearly_property_taxes,
+      "appreciation": x.appreciation,
+      "neighbor_score": x.neighbor_score,
+      "status": x.status,
+    } for x in properties)
 
   return jsonify(result)

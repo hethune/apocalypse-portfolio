@@ -92,7 +92,5 @@ class Property(db.Model):
 
   status = db.Column(db.String(255))
 
-  date_last = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-
   created_at = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
   updated_at = db.Column(db.DateTime(), default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
