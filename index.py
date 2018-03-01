@@ -5,11 +5,13 @@ import logging
 from celery import Celery
 from application.utils.cache import RedisCache, HomeCache
 from flask_bcrypt import Bcrypt
+from flask_autodoc.autodoc import Autodoc
 
 app = Flask(__name__)
 app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+auto = Autodoc(app)
 # session = RedisCache(host=app.config['REDIS_SESSION_HOST'], port=app.config['REDIS_SESSION_PORT'])
 #   password=app.config['REDIS_SESSION_PWD'], dbname=app.config['REDIS_SESSION_DB_NAME'])
 # home_cache = HomeCache(host=app.config['REDIS_SESSION_HOST'], port=app.config['REDIS_SESSION_PORT'],

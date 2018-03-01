@@ -26,3 +26,4 @@ redis==2.10.5
 qiniu==7.1.4
 flask_bcrypt
 mysql-connector-python-rf==2.2.2
+flask-autodoc

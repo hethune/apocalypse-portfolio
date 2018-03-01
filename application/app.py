@@ -12,7 +12,10 @@ import datetime
 import time
 from application.main.mob import mob as mob_blueprint
 from application.main.user import user_bp as user_blueprint
+from application.main.portfolio import portfolio_bp as portfolio_blueprint
 
 app.register_blueprint(mob_blueprint, url_prefix='/api/mob')
 app.register_blueprint(user_blueprint, url_prefix='/api/user')
+app.register_blueprint(portfolio_blueprint, url_prefix='/api/portfolio')
+
 logger = app.logger
