@@ -102,6 +102,12 @@ def for_debug():
       "yearly_insurance_cost": x.yearly_insurance_cost,
       "yearly_property_taxes": x.yearly_property_taxes,
       "appreciation": x.appreciation,
+      "imgurl": x.imgurl,
+      "neighbor_regionid": x.neighbor_regionid,
+      "score_v1_appreciation": x.score_v1_appreciation,
+      "score_v2_balance": x.score_v2_balance,
+      "score_v3_return": x.score_v3_return,
+      "score_version": x.score_version,
       "neighbor_score": x.neighbor_score,
       "status": x.status,
     } for x in properties)

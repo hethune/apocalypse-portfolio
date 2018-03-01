@@ -90,6 +90,13 @@ class Property(db.Model):
 
   neighbor_score = db.Column("neighborscore", db.FLOAT())
 
+  imgurl = db.Column(db.String(255))
+  neighbor_regionid = db.Column(db.String(255))
+  score_v1_appreciation = db.Column(db.FLOAT())
+  score_v2_balance = db.Column(db.FLOAT())
+  score_v3_return = db.Column(db.FLOAT())
+  score_version = db.Column(db.Integer())
+
   status = db.Column(db.String(255))
 
   created_at = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
