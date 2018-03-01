@@ -1,0 +1,48 @@
+# -*- coding: utf-8 -*-
+import os
+
+from setup import basedir
+
+
+class BaseConfig(object):
+  SECRET_KEY = "SO_SECURE"
+  DEBUG = True
+  SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root@localhost/apocalypse"
+  SQLALCHEMY_TRACK_MODIFICATIONS = True
+  SQLALCHEMY_ECHO = True
+  SQLALCHEMY_RECORD_QUERIES = True
+  YUNPIAN_KEY = ""
+  # nexmo
+  NEXMO_KEY = ""
+  NEXMO_SECRET = ""
+  
+  CELERY_BROKER_URL = "redis://localhost:6379/"
+  CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+  # Ping ++
+  #PINGPP_API_KEY = "sk_test_qnXfj1T444C8DSeP0Cfv5a98"
+  PINGPP_API_KEY = ""
+  PINGPP_APP_ID = ""
+  PINGPP_CHANNEL_WX_QR = 'wx_pub_qr'
+  PINGPP_CHANNEL_H5_WAP = 'wx_wap'
+  PINGPP_CHANNEL_WX_PUB = 'wx_pub'
+  PINGPP_CLIENT_IP = '127.0.0.1'
+  PINGPP_PRIVATE_KEY_PATH = ''
+  PINGPP_PUBLIC_KEY_PATH = ''
+
+  # wechat
+  WECHAT_APP_ID_FOR_APP = ''
+  WECHAT_SECRET_FOR_APP = ''
+  WECHAT_GRANT_TYPE_FOR_APP = 'authorization_code'
+  WEHCAT_GET_ACCESS_TOKEN_URL = 'https://api.weixin.qq.com/sns/oauth2/access_token'
+  WEHCAT_GET_USERINFO_URL = 'https://api.weixin.qq.com/sns/userinfo'
+
+
+class TestingConfig(object):
+  """Development configuration."""
+  TESTING = True
+  DEBUG = True
+  WTF_CSRF_ENABLED = False
+  SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+  DEBUG_TB_ENABLED = True
+  PRESERVE_CONTEXT_ON_EXCEPTION = False
