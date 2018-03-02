@@ -79,7 +79,7 @@ def get_recommend_portfolio():
   selected_ids = calc_portfolio(mode, money, limit, properties)
 
   # 组装结果数据，并返回
-  result = {"portfolio": list(
+  result = {"portfolio": sorted(list(
     {
       "id": x.id,
       "source": x.source,
@@ -112,6 +112,6 @@ def get_recommend_portfolio():
       "score_version": x.score_version,
       "neighbor_score": x.neighbor_score,
       "status": x.status,
-    } for x in properties if x.id in selected_ids)}
+    } for x in properties if x.id in selected_ids), key=lambda x: x["score_v1_appreciation"], reverse=True)}
 
   return jsonify(result)

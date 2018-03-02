@@ -26,18 +26,23 @@ def calc_portfolio(mode, budget, limit, properties):
 
   result = knapsack(limit, budget, price, score, matrix)
   n, c, arr, sack = limit, budget, matrix, []
-
+  tmp = []
   while (n > 0 and c > 0):
 
     if (c - price[n - 1] >= 0 and arr[n][c] == arr[n - 1][c - price[n - 1]] + score[n - 1]):
-      sack.append(int(df.loc[n - 1]["id"]))
       c -= price[n - 1]
+      tmp.append(n - 1)
     n -= 1
 
+  for item in tmp:
+    if mode == 1:
+      sack.append(df[df["score_v1_appreciation"] == score[item]]["id"].values[0])
+    elif mode == 2:
+      sack.append(df[df["score_v2_balance"] == score[item]]["id"].values[0])
+    elif mode == 3:
+      sack.append(df[df["score_v3_return"] == score[item]]["id"].values[0])
+
   return sack
-  # print(score)
-  # print(price)
-  # print("item picked:", sack)
 
 
 def knapsack(items, budget, price, score, matrix):
