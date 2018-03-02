@@ -70,10 +70,15 @@ def get_recommend_portfolio():
   leverage = request.args.get("leverage", default=1, type=int)
   mode = request.args.get("mode", default=1, type=int)
   limit = request.args.get("limit", default=30, type=int)
+  city = request.args.get("city")
   money = money * leverage
 
   # 查询数据库，取得所有符合要求的房源数据
-  properties = Property.query.filter_by(status="ForSale").all()
+  properties = []
+  if city:
+    properties = Property.query.filter_by(status="ForSale", city=city).all()
+  else:
+    properties = Property.query.filter_by(status="ForSale").all()
 
   # 通过算法，找出合适的投资组合
   selected_ids = calc_portfolio(mode, money, limit, properties)
