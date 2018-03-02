@@ -27,3 +27,5 @@ qiniu==7.1.4
 flask_bcrypt
 mysql-connector-python-rf==2.2.2
 flask-autodoc
+pandas=0.22.0
+numpy=1.14.1
