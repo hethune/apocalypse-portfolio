@@ -1,0 +1,25 @@
+Appreciation with 350K:
+
+1) 10107 Elderberry Park Ln, Tomball 0.156
+2) 203 Burton Dr 0.16
+3) 341 McCutcheon Ln 0.17
+Avg IRR: 16.2%
+
+Balanced with 350K:
+
+1) 24 N Joslyn Dr, Pittsburgh 0.22
+2) 265 Suncrest Dr 0.18
+3) 8323 Hatina Dr 0.19
+4) 819 Ohio Ave 0.26
+5) 721 Saint Paul Dr 0.11
+Avg IRR: 19.2%
+
+CashFlow with 350K:
+
+1) 341 McCutcheon Ln 0.17
+2) 819 Ohio Ave 0.26
+3) 721 Saint Paul Dr 0.11
+4) 3720 Crosswood Cv 0.21
+5) 1612 Robin Hood Ln 0.11
+6) 14536 Chatham St 0.11
+Avg IRR: 16.1%
