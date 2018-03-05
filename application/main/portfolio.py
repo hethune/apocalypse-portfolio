@@ -76,9 +76,9 @@ def get_recommend_portfolio():
   # 查询数据库，取得所有符合要求的房源数据
   properties = []
   if city:
-    properties = Property.query.filter_by(status="ForSale",  city=city).all()
+    properties = Property.query.filter_by(status="ForSale", city=city).all()
   else:
-    properties = Property.query.filter_by(status="ForSale", property_type = "House").all()
+    properties = Property.query.filter_by(status="ForSale").all()
 
   # 通过算法，找出合适的投资组合
   selected_ids = calc_portfolio(mode, money, limit, properties)

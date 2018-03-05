@@ -13,12 +13,15 @@ def calc_portfolio(mode, budget, limit, properties):
     } for x in properties))
 
   if mode == 1:
+    df = shuffle("score_v1_appreciation", df)
     score = list(df.sort_values(by="score_v1_appreciation", ascending=False)["score_v1_appreciation"][:limit])
     price = [int(i) for i in list(df.sort_values(by="score_v1_appreciation", ascending=False)["list_price"][:limit])]
   elif mode == 2:
+    df = shuffle("score_v2_balance", df)
     score = list(df.sort_values(by="score_v2_balance", ascending=False)["score_v2_balance"][:limit])
     price = [int(i) for i in list(df.sort_values(by="score_v2_balance", ascending=False)["list_price"][:limit])]
   elif mode == 3:
+    df = shuffle("score_v3_return", df)
     score = list(df.sort_values(by="score_v3_return", ascending=False)["score_v3_return"][:limit])
     price = [int(i) for i in list(df.sort_values(by="score_v3_return", ascending=False)["list_price"][:limit])]
 
@@ -43,6 +46,15 @@ def calc_portfolio(mode, budget, limit, properties):
       sack.append(df[df["score_v3_return"] == score[item]]["id"].values[0])
 
   return sack
+
+def shuffle(frame, database):
+
+    test = database.sort_values(frame, ascending = False)
+    it = list(item for item in test[frame][:40])
+    index_db = np.array(list(test[test[frame] == item].index.values[0] for item in it))
+    index = np.random.choice(range(5, 40), 25, replace = False)
+
+    return pd.concat([test.loc[index_db[:5]], test.loc[index_db[index]]])
 
 
 def knapsack(items, budget, price, score, matrix):
