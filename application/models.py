@@ -86,6 +86,7 @@ class Property(db.Model):
   monthly_rent = db.Column("monthlyrent", db.FLOAT())
   yearly_insurance_cost = db.Column("yearlyinsurancecost", db.FLOAT())
   yearly_property_taxes = db.Column("yearlypropertytaxes", db.FLOAT())
+ 
   appreciation = db.Column("appreciation", db.FLOAT())
 
   neighbor_score = db.Column("neighborscore", db.FLOAT())
